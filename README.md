@@ -1,5 +1,5 @@
 # Blackmagic-Videohub-Control
-This program allows you to schedule and fire salvos for the Blackmagic Videohub SDI video routers. You can do this through the command line or importing the script into another program for use with other forms of automation.
+This program allows you to schedule and fire salvos for the [Blackmagic Videohub SDI video routers](https://www.blackmagicdesign.com/products/smartvideohub). You can do this through the command line or importing the script into another program for use with other forms of automation. Some examples would be cron jobs, custom button boxes, or scripts that could monitor the output and check for black video. The world is you oyster, so have fun with this.
 
 ## Requirements
 The scripts in this repository require Python3 to run properly. You can download [Python3 here](https://www.python.org/downloads/).
