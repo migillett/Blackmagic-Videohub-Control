@@ -11,7 +11,11 @@ There are 2 Python scripts in this repository. The most important one is `bmd_ro
 
 
 ### Run from the terminal
-You can call the script from the terminal using a command like this: `python3 ./bmd_router_control.py -a 192.168.1.30 -d 9 -s 10`. The flags designate the following:
+You can call the script from the terminal using a command like this:
+```
+python3 ./bmd_router_control.py -a 192.168.1.30 -d 9 -s 10
+```
+The flags designate the following:
 ```
 -a = the ip address of your video router
 
