@@ -4,7 +4,7 @@ This program allows you to schedule and fire salvos for the Blackmagic Videohub 
 ## Requirements
 The scripts in this repository require Python3 to run properly. You can download [Python3 here](https://www.python.org/downloads/).
 
-The `bmd_scheduler.py` requires the python library `schedule` to work properly. Install it using `pip3 install schedule`. There are some examples in the script, but you can see more on how the library works in [their documentation](https://pypi.org/project/schedule/)
+The `bmd_scheduler.py` requires the python library `schedule` to work properly. Install it using `pip3 install schedule`. There are some examples in the script, but you can see more on how the library works in [their documentation](https://pypi.org/project/schedule/).
 
 ## How to use
 There are 2 Python scripts in this repository. The most important one is `bmd_router_control.py`. You can import this script into other python files or even run it from the terminal. Here are some examples:
