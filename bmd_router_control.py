@@ -5,6 +5,9 @@ import argparse
 # This program is an importable way to control the blackmagic cleanswitch 12x12 videohub
 # Written by Michael Gillett, 2021
 
+# Based on the Developer SDK provided by Blackmagic Design
+    # https://www.blackmagicdesign.com/developer/
+
 # This is the base program, but this is best used when imported into another automation program
 # You can also use this from the terminal too.
 # for example:
