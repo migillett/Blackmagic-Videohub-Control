@@ -41,6 +41,10 @@ class blackmagic_router_control():
         cmd += '\n'  # the router requires 2 blank lines at the end of every command
         self.execute(cmd)
 
+    def route_single(self, destination, source):
+        cmd = f'video output routing:\n{destination-1} {source-1}\n\n'
+        self.execute(cmd)
+
     def execute(self, command):
         self.tn.read_until(b"END PRELUDE:")
         self.tn.write((command).encode('ascii'))
@@ -48,7 +52,7 @@ class blackmagic_router_control():
 
         if self.debug:
             print(command)
-        print(f'Switch command confirmed by router at {self.host}')
+        print(f'\nSwitch command confirmed by router at {self.host}\n')
 
 
 if __name__ == '__main__':
@@ -71,4 +75,4 @@ if __name__ == '__main__':
         src = int(input('\nInput source: '))
         
     router = blackmagic_router_control(host=addr)
-    router.route_inputs([(dst, src)])
+    router.route_single(destination=dst, source=src)
