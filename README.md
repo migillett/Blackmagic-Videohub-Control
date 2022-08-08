@@ -40,6 +40,10 @@ router.route_inputs([(1,2), (2,3), (4,6)])
 
 The most important thing to remember is that the route_inputs command requires a list of tuples. It's formatted as (destination, source). So the command above would route input 2 to destination 1, input 3 to destination 2, and input 6 to destination 4. It's a little weird, but it's how you'd do it using the GUI.
 
+If that's not quite your cup of tea, you can instead use the `route_single` command. All you have to do there is pass through the source and destination as arguments and it'll execute a command for you. There is no salvo support for pre-defined configs, but it is a bit easier for one-off setups. For example:
+
+`router.route_single(destination=4, source=3)`
+
 
 ## Scheduling Commands
 If you'd rather not make your own way of queueing up commands, feel free to use the included `bmd_scheduler.py`. This script is pretty easy to use, just make sure you have the library `schedule` installed. Here's how it works:
