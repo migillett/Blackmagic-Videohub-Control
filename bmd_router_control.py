@@ -25,10 +25,12 @@ class blackmagic_router_control():
         self.timeout = timeout_seconds
         self.debug = debug
         self.host = host
-
+        self.port = port
+    
+    def init_connection(self):
         # need to add a try and except error here for bad ip, port
         try:
-            self.tn = telnetlib.Telnet(self.host, port, self.timeout)
+            self.tn = telnetlib.Telnet(self.host, self.port, self.timeout)
         except Exception as e:
             exit(f'\n{str(e).upper()} ERROR: Unable to connect to video router. Please reconfigure and try again.\n')
 
@@ -46,6 +48,9 @@ class blackmagic_router_control():
         self.execute(cmd)
 
     def execute(self, command):
+        self.init_connection()
+
+        # execute command
         self.tn.read_until(b"END PRELUDE:")
         self.tn.write((command).encode('ascii'))
         self.tn.read_until(b"ACK", self.timeout)
@@ -53,6 +58,9 @@ class blackmagic_router_control():
         if self.debug:
             print(command)
         print(f'\nSwitch command confirmed by router at {self.host}\n')
+
+        # close connection
+        self.tn.close()
 
 
 if __name__ == '__main__':
