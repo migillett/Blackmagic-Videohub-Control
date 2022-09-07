@@ -32,7 +32,7 @@ class blackmagic_router_control():
         try:
             self.tn = telnetlib.Telnet(self.host, self.port, self.timeout)
         except Exception as e:
-            exit(f'\n{str(e).upper()} ERROR: Unable to connect to video router. Please reconfigure and try again.\n')
+            raise TimeoutError(f'Unable to connect to video router. Please reconfigure and try again.\n')
 
     # routing_commands need to be a list of touples.
     # ie: [(destination, source), (destination, source)]
@@ -64,6 +64,7 @@ class blackmagic_router_control():
 
 
 if __name__ == '__main__':
+
     # try and pull the router address. if none defined, require input.
     try:
         addr = args.address[0]
@@ -84,3 +85,7 @@ if __name__ == '__main__':
         
     router = blackmagic_router_control(host=addr)
     router.route_single(destination=dst, source=src)
+
+    # For testing connection issues
+    # router = blackmagic_router_control(host='0.0.0.0')
+    # router.route_single(destination=1, source=1)
