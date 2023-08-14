@@ -41,11 +41,12 @@ class blackmagic_router_control():
             print(
                 f'{generate_timestamp()} | Established connection with {self.host}:{self.port}')
             return True
-        
+
         except Exception as e:
-            print(f'{e}: Unable to connect to video router. Please reconfigure and try again.\n'))
+            print(
+                f'{e}: Unable to connect to video router. Please reconfigure and try again.\n')
             return False
-                
+
     # routing_commands need to be a list of touples.
     # ie: [(destination, source), (destination, source)]
     def route_inputs(self, routing_commands: list = []) -> None:
@@ -75,7 +76,7 @@ class blackmagic_router_control():
             # close connection
             self.tn.close()
             return True
-        
+
         else:
             return False
 
