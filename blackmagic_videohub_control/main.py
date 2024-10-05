@@ -129,7 +129,3 @@ if __name__ == '__main__':
     router.route_single(
         cmd=RouteCommand(source=src, destination=dst)
     )
-
-    # For testing connection issues
-    # router = BlackmagicRouterControl(host='0.0.0.0')
-    # router.route_single(destination=1, source=1)
