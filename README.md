@@ -31,28 +31,22 @@ In other words, the command above would route source 10 to output 9. Keep in min
 If you'd rather import the `bmd_router_control.py` into another script, it's super easy to do. Here's an example:
 
 ```
-from bmd_router_control import blackmagic_router_control
+from blackmagic_router_control import BlackmagicRouterControl, RouteCommand
 
-router = blackmagic_router_control('192.168.1.30')
+router = BlackmagicRouterControl('192.168.1.30')
 
-router.route_inputs([(1,2), (2,3), (4,6)])
+cmds = [
+    RouteCommand(src=1, dst=2),
+    RouteCommand(src=2, dst=3),
+    RouteCommand(src=4, dst=6)
+]
+
+router.route_inputs(cmds)
 ```
-
-The most important thing to remember is that the route_inputs command requires a list of tuples. It's formatted as (destination, source). So the command above would route input 2 to destination 1, input 3 to destination 2, and input 6 to destination 4. It's a little weird, but it's how you'd do it using the GUI.
 
 If that's not quite your cup of tea, you can instead use the `route_single` command. All you have to do there is pass through the source and destination as arguments and it'll execute a command for you. There is no salvo support for pre-defined configs, but it is a bit easier for one-off setups. For example:
 
 `router.route_single(destination=4, source=3)`
-
-
-## Scheduling Commands
-If you'd rather not make your own way of queueing up commands, feel free to use the included `bmd_scheduler.py`. This script is pretty easy to use, just make sure you have the library `schedule` installed. Here's how it works:
-
-1. Define when you want the command to trigger using military time
-2. Replace the `192.168.1.30` on line 12 with the IP address of your router
-3. (optional) define your own sources and destinations for readibility and ease-of-use later
-4. Create your own functions to call later. There are 2 examples in there now that you can edit for your needs
-5. Schedule when you want the scripts to run. Again, if you want help on how to use schedule, visit [their documentation](https://pypi.org/project/schedule/). Right now, they're scheduled to run the salvo every day at the time you specify.
 
 
 ## Contributing
