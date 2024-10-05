@@ -30,16 +30,6 @@ logger.setLevel(logging.DEBUG)
 logger.addHandler(file_handler)
 logger.addHandler(console_handler)
 
-parser = argparse.ArgumentParser(
-    description='Set and Get Blackmagic VideoHub configurations.')
-parser.add_argument('-d', '--destination', dest='destination',
-                    type=int, nargs=1, help="Get cross point source for destination")
-parser.add_argument('-s', '--source', dest='source', type=int, nargs=1,
-                    help="Set cross point source for destination (defined by -d)")
-parser.add_argument('-a', '--address', dest='address', type=str,
-                    nargs=1, help="IP address or DNS name of the video router")
-args = parser.parse_args()
-
 
 @dataclass
 class RouteCommand:
@@ -107,6 +97,16 @@ class BlackmagicRouterControl():
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(
+        description='Set and Get Blackmagic VideoHub configurations.')
+    parser.add_argument('-d', '--destination', dest='destination',
+                        type=int, nargs=1, help="Get cross point source for destination")
+    parser.add_argument('-s', '--source', dest='source', type=int, nargs=1,
+                        help="Set cross point source for destination (defined by -d)")
+    parser.add_argument('-a', '--address', dest='address', type=str,
+                        nargs=1, help="IP address or DNS name of the video router")
+    args = parser.parse_args()
+
     # try and pull the router address. if none defined, require input.
     try:
         addr = args.address[0]
