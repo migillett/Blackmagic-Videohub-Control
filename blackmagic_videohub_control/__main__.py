@@ -14,11 +14,21 @@ import logging
 # for example:
 # python3 ./bmd_router_control.py -a 192.168.1.30 -s 12 -d 1
 
-logging.basicConfig(
-    filename="bmd_router_control.log",
-    level=logging.DEBUG,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
+file_handler = logging.FileHandler("bmd_router_control.log")
+file_handler.setLevel(logging.DEBUG)
+file_formatter = logging.Formatter(
+    '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(file_formatter)
+
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.DEBUG)
+console_handler.setFormatter(file_formatter)
+
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+
+logger.addHandler(file_handler)
+logger.addHandler(console_handler)
 
 parser = argparse.ArgumentParser(
     description='Set and Get Blackmagic VideoHub configurations.')
