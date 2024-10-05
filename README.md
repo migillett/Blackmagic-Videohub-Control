@@ -7,19 +7,22 @@ Installation is pretty painless. Just run the following command:
 pip3 install git+https://github.com/migillett/Blackmagic-Videohub-Control@v1.1.0
 ```
 
+To import this into your other Python3 programs, just do this:
+```python
+from blackmagic_videohub_control import BlackmagicRouterControl, RouteCommand
+
+router = BlackmagicRouterControl('192.168.2.2')
+router.route_single(source=1, destination=1)
+```
+
 ## Requirements
-The scripts in this repository require Python3 to run properly. You can download [Python3 here](https://www.python.org/downloads/).
-
-The `bmd_scheduler.py` requires the python library `schedule` to work properly. Install it using `pip3 install schedule`. There are some examples in the script, but you can see more on how the library works in [their documentation](https://pypi.org/project/schedule/).
-
-## How to use
-There are 2 Python scripts in this repository. The most important one is `bmd_router_control.py`. You can import this script into other python files or even run it from the terminal. Here are some examples:
+The scripts in this repository require Python3 to run properly. You can download [Python3 here](https://www.python.org/downloads/). The software does utilize `telnetlib` to talk to the Videohub, but that's built-in to Python3.
 
 
 ### Run from the terminal
 You can call the script from the terminal using a command like this:
 ```
-python3 ./bmd_router_control.py -a 192.168.1.30 -d 9 -s 10
+python3 ./blackmagic_videohub_control/main.py -a 192.168.1.30 -d 9 -s 10
 ```
 The flags designate the following:
 ```
@@ -56,7 +59,7 @@ If that's not quite your cup of tea, you can instead use the `route_single` comm
 
 
 ## Contributing
-Please feel free to share any improvements you have! This is a fairly new repository, so recommendations or improvements are always appreciated.
+Please feel free to share any improvements you have! Recommendations or improvements are always appreciated.
 
 
 ## Sources
