@@ -69,13 +69,6 @@ class BlackmagicRouterControl():
 
         self.execute(cmd)
 
-    def route_single(self, source: int, destination: int) -> None:
-        self.logger.info(
-            f'Routing {source} to {destination}')
-
-        cmd = f'video output routing:\n{destination - 1} {source - 1}\n\n'  # noqa
-        self.execute(cmd)
-
     def execute(self, command: str) -> bool:
         if self.init_connection():
             # execute command
@@ -126,6 +119,5 @@ if __name__ == '__main__':
         src = int(input('\nInput source: '))
 
     router = BlackmagicRouterControl(host=addr)
-    router.route_single(
-        cmd=RouteCommand(source=src, destination=dst)
-    )
+    cmd = RouteCommand(source=src, destination=dst)
+    router.route_inputs([cmd])
