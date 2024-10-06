@@ -45,7 +45,7 @@ class BlackmagicRouterControl():
 
         self.logger = logging.getLogger(self.__class__.__name__)
 
-    def init_connection(self) -> bool:
+    def __init_connection__(self) -> bool:
         # need to add a try and except error here for bad ip, port
         try:
             self.tn = telnetlib.Telnet(self.host, self.port, self.timeout)
@@ -67,10 +67,10 @@ class BlackmagicRouterControl():
             cmd += f'{pair.destination - 1} {pair.source - 1}\n'
         cmd += '\n'  # the router requires 2 blank lines at the end of every command
 
-        self.execute(cmd)
+        self.__execute__(cmd)
 
-    def execute(self, command: str) -> bool:
-        if self.init_connection():
+    def __execute__(self, command: str) -> bool:
+        if self.__init_connection__():
             # execute command
             self.tn.read_until(b"END PRELUDE:")
             self.logger.info(
