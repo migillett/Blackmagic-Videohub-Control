@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "blackmagic-videohub-control"
+version = "1.1.2"
+description = "A library for interfacing with Blackmagic Design Videohub routers"
+authors = ["Michael Gillett <51103663+migillett@users.noreply.github.com>"]
+keywords = ["blackmagic", "video", "tv", "studio", "router", "videohub"]
+repository = "https://github.com/migillett/Blackmagic-Videohub-Control/"
+readme = "README.md"
+license = "MIT"
+packages = [{include = "blackmagic_videohub_control"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
